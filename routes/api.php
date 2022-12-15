@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\StoreController;
@@ -26,5 +27,7 @@ Route::post('/user/register', [UserController::class, 'Register']);
 Route::post('/user/login', [UserController::class, 'Login']);
 Route::post('/user/token', [UserController::class, 'VerifyToken']);
 Route::post('/product/add', [ProductController::class, 'AddProduct']);
+Route::post('/product/check', [ProductController::class, 'CheckBarcode']);
 Route::post('/store/register', [StoreController::class, 'RegisterStore']);
 Route::post('/stock/add', [StockController::class, 'Add']);
+Route::post('/order/add', [OrderController::class, 'Add']);

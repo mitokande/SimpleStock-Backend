@@ -31,4 +31,21 @@ class ProductController extends Controller
             'message' => json_decode($response->body())->message
         ]);
     }
+
+    public function CheckBarcode(Request $request){
+        $barcode = $request->barcode;
+        $product = Product::query()->where('product_barcode','=',$barcode)->first();
+        if($product != null){
+            return response()->json([
+                'code' => 200,
+                'data' => $product,
+                'message' => 'Product with the Barcode found succesfully.'
+            ]);
+        }
+        return response()->json([
+            'code' => 401,
+            'data' => null,
+            'message' => 'Product with the Barcode could not be found succesfully.'
+        ]);
+    }
 }
