@@ -31,3 +31,4 @@ Route::post('/product/check', [ProductController::class, 'CheckBarcode']);
 Route::post('/store/register', [StoreController::class, 'RegisterStore']);
 Route::post('/stock/add', [StockController::class, 'Add']);
 Route::post('/order/add', [OrderController::class, 'Add']);
+Route::post('/product/buy', [OrderController::class, 'Add']);

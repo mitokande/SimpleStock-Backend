@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use stdClass;
 use \Validator;
 
 class UserController extends Controller
@@ -30,7 +31,6 @@ class UserController extends Controller
             'user_token' => Hash::make($request->name . $request->ip()),
             'user_type' => $request->user_type
         ]);
-
         return response()->json([
             'code' => 200,
             'data' => $user,

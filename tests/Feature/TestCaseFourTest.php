@@ -18,13 +18,13 @@ class TestCaseFourTest extends TestCase
     {
         $register = $this->post('/user/register',[
             'name' => 'mithat',
-            'email'=>'mithatcan2@gmail.com',
+            'email'=>'mithatcan@gmail.com',
             'password'=>'deneme123',
             'user_type' => 1
         ]);
         $register->assertStatus(200)->assertJsonFragment(['code' => 200]);
 
-        $response = $this->post('/user/login',['email'=>'mithatcan2@gmail.com','password'=>'deneme123']);
+        $response = $this->post('/user/login',['email'=>'mithatcan@gmail.com','password'=>'deneme123']);
         
         $response->assertStatus(200)->assertJsonFragment(['code'=>200]);
         

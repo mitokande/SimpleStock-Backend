@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class TestCaseOneTest extends TestCase
+class TestCaseTwoTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -27,10 +27,7 @@ class TestCaseOneTest extends TestCase
 
         $barcodeCheck->assertStatus(200)->assertJsonFragment(['code' => 200]);
 
-        $stockrequest = $this->post('/stock/add', ['token' => $token, 'barcode' => '8547565663', 'quantity' => 13]);
+        $stockrequest = $this->post('/order/add', ['token' => $token, 'barcode' => '8547565663', 'quantity' => 13]);
         $stockrequest->assertStatus(200)->assertJsonFragment(['code' => 200]);
-
-        
-
     }
 }

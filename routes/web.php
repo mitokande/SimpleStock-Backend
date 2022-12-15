@@ -16,5 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/store', function () {
+    return view('store');
+});
+Route::get('/store/{id}', function ($id) {
+    return view('store');
+});
+Route::get('/product/{id}', function ($id) {
+    return view('product');
+});
 require 'api.php';
