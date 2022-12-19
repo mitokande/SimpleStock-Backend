@@ -22,11 +22,17 @@ class TestCaseFourTest extends TestCase
             'password'=>'deneme123',
             'user_type' => 1
         ]);
-        $register->assertStatus(200)->assertJsonFragment(['code' => 200]);
+        $register->assertStatus(200)->assertJsonFragment([
+            'code' => 200,
+            'message'=>'User registered successfully.'
+        ]);
 
         $response = $this->post('/user/login',['email'=>'mithatcan@gmail.com','password'=>'deneme123']);
         
-        $response->assertStatus(200)->assertJsonFragment(['code'=>200]);
+        $response->assertStatus(200)->assertJsonFragment([
+            'code'=>200,
+            'message'=>'User logged in successfully.'
+        ]);
         
         $data = $response->getData();
         $token = $data->data->user_token;
@@ -38,7 +44,10 @@ class TestCaseFourTest extends TestCase
             'token' => $token,
         ]);
 
-        $response->assertStatus(200)->assertJsonFragment(['code'=>200]);
+        $response->assertStatus(200)->assertJsonFragment([
+            'code'=>200,
+            'message'=>'User created a store successfully.'
+        ]);
 
         
         $response = $this->post('/product/add',[
@@ -51,6 +60,9 @@ class TestCaseFourTest extends TestCase
             'token' => $token,
         ]);
 
-        $response->assertStatus(200)->assertJsonFragment(['code'=>200]);
+        $response->assertStatus(200)->assertJsonFragment([
+            'code'=>200,
+            'message'=>'Product added to database with the given barcode successfully.'
+        ]);
     }
 }
