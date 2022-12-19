@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\URL;
 
 class StoreController extends Controller
 {
     //
     public function RegisterStore(Request $request)
     {
-        $tokenresponse = Http::post('http://127.0.0.1:8001/user/token', ['token' => $request->token]);
+        $tokenresponse = Http::post(URL::to('/').'user/token', ['token' => $request->token]);
         if(json_decode($tokenresponse->body())->code == 200){
             $store = new Store();
             $store->store_name = $request->store_name;

@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\URL;
 
 class ProductController extends Controller
 {
     //
     public function AddProduct(Request $request){
-        $response = Http::post('http://127.0.0.1:8001/user/token', ['token' => $request->token]);
+        $response = Http::post(URL::to('/').'user/token', ['token' => $request->token]);
         if(json_decode($response->body())->code == 200){
             $product = new Product();
             $product->product_name = $request->product_name;
